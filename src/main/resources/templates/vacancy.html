@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Заявки на визу</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Заявки на визу</h2>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div th:each="i : ${vacancies}" class="col-3">
+                        <div class="p-2">
+                            <img class="img-fluid d-block mx-auto p-3 rounded-5"
+                                 th:src="'/img/' + ${i.user.primarys.photo}">
+                            <p>ФИО: <span th:text="${i.user.primarys.getFIO()}"></span></p>
+                            <p>Баллов: <span th:text="${i.user.score.summary}"></span></p>
+                            <p>Статус заявки: <span th:text="${i.status.name}"></span></p>
+                            <div th:if="${i.status.name() == 'WAITING'}">
+                                <div class="row">
+                                    <div class="col-12 mb-3" align="center">
+                                        <a th:href="'/vacancy/approved/' + ${i.id}"
+                                           class="btn btn-primary w-100">Одобрить</a>
+                                    </div>
+                                    <div class="col-12" align="center">
+                                        <a th:href="'/vacancy/rejected/' + ${i.id}"
+                                           class="btn btn-primary w-100">Отклонить</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:insert="blocks/footer :: footer" class="page-footer dark mt-auto"></footer>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

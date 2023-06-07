@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Заявки на зачисление</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Заявки на зачисление</h2>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div th:each="i : ${enrollments}" class="col-3">
+                        <div class="p-2">
+                            <img class="img-fluid d-block mx-auto p-3 rounded-5"
+                                 th:src="'/img/' + ${i.primarys.photo}">
+                            <p>ФИО: <span th:text="${i.primarys.getFIO()}"></span></p>
+                            <p>Номер паспорта: <span th:text="${i.primarys.passport_number}"></span></p>
+                            <p>Гражданство: <span th:text="${i.tertiary.citizenship.name}"></span></p>
+                            <div class="row">
+                                <div class="col-12 mb-3" align="center">
+                                    <a th:href="'/enrollments/enrollment/' + ${i.id}"
+                                       class="btn btn-primary w-100">Зачислить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:insert="blocks/footer :: footer" class="page-footer dark mt-auto"></footer>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

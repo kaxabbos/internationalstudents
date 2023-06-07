@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="${human.primarys.surname}"></title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:insert="blocks/nav :: nav"></div>
+<main class="page product-page">
+    <section class="clean-block clean-product dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info"
+                    th:text="${human.primarys.surname + ' ' + human.primarys.name + ' ' + human.primarys.patronymic}"></h2>
+            </div>
+            <div class="block-content">
+                <div class="product-info">
+                    <div class="row">
+                        <div class="col-4">
+                            <img th:src="'/img/' + ${human.primarys.photo}" class="d-block w-100">
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-6 mb-2">
+                                    <a href="/profile/edit/" class="btn btn-success w-100">Редактировать</a>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <a href="/profile/score/" class="btn btn-success w-100">Оцените свои навыки</a>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <a href="/profile/vacancy/" class="btn btn-primary w-100">Заявка на визу</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td class="stat">Коммуникации</td>
+                                <td th:text="${human.score.com}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Работа в команде</td>
+                                <td th:text="${human.score.team}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Самостоятельность</td>
+                                <td th:text="${human.score.ind}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Дисциплина</td>
+                                <td th:text="${human.score.dis}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Коммуникации</td>
+                                <td th:text="${human.score.com}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Серия паспорта</td>
+                                <td th:text="${human.primarys.passport}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Номер паспорта</td>
+                                <td th:text="${human.primarys.passport_number}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Дата рождения</td>
+                                <td th:text="${human.secondary.date}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Кем выдан паспорт</td>
+                                <td th:text="${human.secondary.issued}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Дата выдачи паспорта</td>
+                                <td th:text="${human.secondary.issued_date}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Идентификационный номер</td>
+                                <td th:text="${human.secondary.identity}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Адрес</td>
+                                <td th:text="${human.secondary.address}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Мобильный телефон</td>
+                                <td th:text="${human.secondary.tel_mob}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Домашний телефон</td>
+                                <td th:text="${human.secondary.tel_home}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Электронная почта</td>
+                                <td th:text="${human.secondary.email}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Группа</td>
+                                <td th:text="${human.secondary.job}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Статус</td>
+                                <td th:text="${human.secondary.post}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Семейное положение</td>
+                                <td th:text="${human.tertiary.marital.name}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Гражданство</td>
+                                <td th:text="${human.tertiary.citizenship.name}"></td>
+                            </tr>
+                            <tr>
+                                <td class="stat">Военнообязанный</td>
+                                <td th:text="${human.tertiary.conscripted.name}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer th:insert="blocks/footer :: footer" class="page-footer dark mt-auto"></footer>
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+
+</html>
